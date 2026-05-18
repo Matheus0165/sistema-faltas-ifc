@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TELA ADMIN - CONTROLE TOTAL!!!</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body class="tela-admin">
+  <div class="app-layout">
+    <header class="top-bar">
+      <div class="logo">SISTEMA DE FALTAS!!!</div>
+      <div class="menu-usuario">
+        Usuário: <span class="nome" id="nome-usuario"></span>
+        <span class="data-quebrada">32/13/2024 - 25:61:61</span>
+        <!-- FRAGILIDADE 1 (Consistência): botão Sair vermelho, igual status crítico -->
+        <button class="btn btn-logout" onclick="logout()">SAIR DO SISTEMA</button>
+      </div>
+    </header>
+
+    <main>
+      <div class="page-title">
+        <h1>TELA ADMIN - CONTROLE TOTAL</h1>
+        <p class="subtitulo">Painel de Coordenação · Ciência da Computação · 2026.1</p>
+      </div>
+
+      <div class="atencao-banner">ATENÇÃO: VOCÊ TEM CONTROLE TOTAL DO SISTEMA!!!</div>
+
+      <div class="layout-com-sidebar">
+        <!-- SIDEBAR ARCO-ÍRIS (FRAGILIDADE 1: cada botão de uma cor sem motivo) -->
+        <aside class="sidebar-rainbow">
+          <a href="coordenador.html">Início</a>
+          <a href="coordenador.html#materias">Matérias</a>
+          <a href="coordenador.html#alunos">Alunos</a>
+          <a href="coordenador.html#profs">Professores</a>
+          <a href="alertas.html">Faltas</a>
+          <a href="alertas.html">Relatórios</a>
+          <a href="alertas.html">Configurações</a>
+          <a href="#" onclick="logout(); return false;">Sair do Sistema</a>
+        </aside>
+
+        <div class="conteudo">
+          <!-- Cards de estatísticas -->
+          <div class="card-stats" id="cards-stats"></div>
+
+          <!-- Filtros -->
+          <div class="card">
+            <h3>FILTROS!!!</h3>
+            <div class="filtros">
+              <div>
+                <label for="filtro-busca">Buscar disciplina</label><br>
+                <!-- FRAGILIDADE 7 (Controle): aplica em tempo real -->
+                <input type="text" id="filtro-busca" placeholder="Nome ou código">
+              </div>
+              <div>
+                <label for="filtro-professor">Professor</label><br>
+                <!-- FRAGILIDADE 7: aplica automático no change -->
+                <select id="filtro-professor">
+                  <option value="">Todos</option>
+                </select>
+              </div>
+              <!-- FRAGILIDADE 6: sem botão "limpar filtros" -->
+              <!-- FRAGILIDADE 3: sem contador "X encontradas" -->
+            </div>
+          </div>
+
+          <!-- Lista de disciplinas -->
+          <h2>LISTA DE TODAS AS MATÉRIAS CADASTRADAS!!!</h2>
+          <div class="grid-disciplinas" id="lista-disciplinas"></div>
+
+          <div class="atencao-banner">ATENÇÃO: NÃO ESQUEÇA DE SALVAR!!!</div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- FRAGILIDADE 7 (Controle): modal abre sozinho ao carregar a página -->
+  <div class="modal-overlay" id="modal-boas-vindas">
+    <div class="modal">
+      <h2>⚠ ATENÇÃO!!! ⚠</h2>
+      <p style="font-size: 16px; font-weight: bold;">Existem <strong id="modal-count" style="font-size: 32px; color: #ff0000;">0</strong> alunos em situação CRÍTICA!!!</p>
+      <p>(mais de 25% de faltas — REPROVAÇÃO!!!)</p>
+      <div class="acoes">
+        <button class="btn" onclick="fecharModal()">Depois</button>
+        <button class="btn btn-primario" onclick="window.location.href='alertas.html'">Ir para Alertas</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script>
+    const user = exigirLogin('coordenador');
+    if (user) inicializarDashboardCoordenador(user);
+  </script>
+  <script src="js/themeSwitch.js"></script>
+</body>
+</html>

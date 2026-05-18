@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TELA ALUNO - MINHA FREQUÊNCIA!!!</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body class="tela-aluno">
+  <div class="app-layout">
+    <header class="top-bar">
+      <div class="logo">SISTEMA DE FALTAS!!!</div>
+      <div class="menu-usuario">
+        <span class="nome" id="nome-usuario"></span>
+        <button class="btn btn-logout" onclick="logout()">Sair</button>
+      </div>
+    </header>
+
+    <main>
+      <div class="page-title">
+        <h1 id="titulo-aluno">TELA ALUNO - MINHA FREQUÊNCIA</h1>
+        <p class="subtitulo" id="subtitulo-aluno"></p>
+      </div>
+
+      <div class="atencao-banner">SUA FREQUÊNCIA GERAL ABAIXO!!!</div>
+
+      <div class="card-stats" id="cards-stats"></div>
+
+      <div class="card">
+        <h2>FALTAS POR DISCIPLINA</h2>
+        <div class="grafico-container">
+          <canvas id="grafico-aluno"></canvas>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>DISCIPLINAS CURSADAS</h2>
+        <table class="tabela">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Matéria</th>
+              <th>Professor</th>
+              <th>Faltas</th>
+              <th>%</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-disciplinas"></tbody>
+        </table>
+      </div>
+
+      <div class="atencao-banner">ATENÇÃO: FIQUE DE OLHO NA SUA FREQUÊNCIA!!!</div>
+    </main>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/aluno.js"></script>
+  <script>
+    const user = exigirLogin();
+    if (user) inicializarAluno(user);
+  </script>
+  <script src="js/themeSwitch.js"></script>
+</body>
+</html>

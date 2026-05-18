@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>>>> SISTEMA DE FALTAS!!! - LOGIN!!! <<<</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body class="tela-login">
+  <div class="login-wrapper">
+    <div class="login-card">
+      <!-- Título "sangrento" -->
+      <h1 class="titulo-bloody">Sistema de Faltas</h1>
+      <p class="acesse-agora">Acesse Agora!!!</p>
+
+      <!-- FRAGILIDADE 5 (Prevenção de erros): data e hora propositalmente inválidas
+           (mês 13, dia 32, hora 25, minuto 61, segundo 61) -->
+      <div class="data-quebrada">
+        Data: 32/13/2024 - 25:61:61
+      </div>
+
+      <div class="faca-seu-login">FAÇA SEU LOGIN AQUI</div>
+
+      <!-- FRAGILIDADE 5: sem type="email", sem required, sem maxlength.
+           Aceita qualquer coisa. -->
+      <label for="email">Usuário:</label>
+      <input type="text" id="email" autocomplete="username">
+
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" autocomplete="current-password">
+
+      <button class="btn btn-primario" id="btn-entrar">ENTRAR</button>
+
+      <!-- FRAGILIDADE 6 (Reversão): link que não faz nada -->
+      <p class="esqueceu"><a href="#">Esqueceu sua senha? Clique Aqui!!!</a></p>
+
+      <!-- FRAGILIDADE 3 (Feedback): mensagem de erro genérica -->
+      <p class="erro" id="erro"></p>
+
+      <!-- Marquee "Seja bem-vindo" rolando — clássico anos 90 -->
+      <div class="bemvindo-marquee">
+        <span>★ Seja bem-vindo ao sistema mais completo do mundo!!! ★ FAÇA SEU CADASTRO!!! ★ ACESSE AGORA!!! ★</span>
+      </div>
+
+      <!-- Contador de visitas estilo Geocities -->
+      <div style="margin-top: 12px; font-size: 11px; color: #000; font-weight: bold;">
+        Você é o visitante n°
+        <div class="contador-visitas">
+          <span class="digitos">0000175</span>
+        </div>
+        <div style="margin-top: 4px;">Último acesso: <span class="data-quebrada" style="font-size:10px; padding: 2px 4px;">32/13/2024 25:61:61</span></div>
+      </div>
+
+      <div class="demo-info">
+        <strong>CONTAS DEMO:</strong><br>
+        Coordenador: <code>coord@ifc.br</code> / <code>123</code><br>
+        Professor: <code>joao@ifc.br</code> / <code>123</code><br>
+        Professor: <code>maria@ifc.br</code> / <code>123</code><br>
+        Professor: <code>carlos@ifc.br</code> / <code>123</code>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.getElementById('btn-entrar').addEventListener('click', tentarLogin);
+    document.getElementById('senha').addEventListener('keypress', e => {
+      if (e.key === 'Enter') tentarLogin();
+    });
+
+    function tentarLogin() {
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('senha').value;
+      const user = fazerLogin(email, senha);
+      if (user) {
+        // FRAGILIDADE 4 (Encerramento): sem mensagem de boas-vindas, redireciona seco
+        const destino = user.perfil === 'coordenador' ? 'coordenador.html' : 'professor.html';
+        window.location.href = destino;
+      } else {
+        // FRAGILIDADE 3: erro genérico
+        document.getElementById('erro').textContent = 'FALHA AO ENTRAR!!!';
+      }
+    }
+  </script>
+  <script src="js/themeSwitch.js"></script>
+</body>
+</html>

@@ -1,0 +1,322 @@
+/* ============================================================
+   base.css — v1 CAÓTICA · Estética "INSANA" para avaliação heurística
+   AVISO: Todas as decisões aqui são PROPOSITALMENTE ruins.
+   Cada página tem seu próprio tema visual = consistência ZERO
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Bungee&family=Press+Start+2P&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+:root {
+  /* Paleta INSANA — todas as cores brigando entre si */
+  --cor-bg: #4a1a8a;
+  --cor-superficie: #ffffff;
+  --cor-borda: #000000;
+  --cor-texto: #000000;
+  --cor-texto-secundario: #555555;
+
+  /* FRAGILIDADE 1 (Shneiderman: Consistência):
+     Vermelho usado em status crítico, em logout, em "ATENÇÃO!!!"
+     e em qualquer coisa que precise gritar com o usuário */
+  --cor-perigo: #ff0000;
+  --cor-perigo-hover: #cc0000;
+
+  --cor-primaria: #ff00aa;
+  --cor-primaria-hover: #cc0088;
+
+  --cor-alerta: #ffcc00;
+  --cor-sucesso: #00cc00;
+
+  --raio: 0;       /* Bordas retas = visual rude */
+  --raio-lg: 0;
+
+  /* Fontes — Comic Sans pra TUDO, com Impact e Press Start pra "destaque" */
+  --fonte: 'Comic Neue', 'Comic Sans MS', cursive;
+  --fonte-titulo: 'Bungee', 'Impact', sans-serif;
+  --fonte-display: 'Press Start 2P', monospace;
+}
+
+body {
+  font-family: var(--fonte);
+  background: var(--cor-bg);
+  color: var(--cor-texto);
+  font-size: 14px;
+  line-height: 1.4;
+  min-height: 100vh;
+}
+
+/* FRAGILIDADE 2 (Universalidade): contraste péssimo em tudo */
+a {
+  color: #0000ff;
+  text-decoration: underline;
+  font-weight: bold;
+}
+a:hover { color: #ff00ff; }
+a:visited { color: #800080; }
+
+h1 {
+  font-family: var(--fonte-titulo);
+  font-size: 30px;
+  color: #ff0000;
+  text-shadow: 3px 3px 0 #ffff00, 6px 6px 0 #000;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 8px 0;
+  letter-spacing: 1px;
+}
+
+h2 {
+  font-family: var(--fonte-titulo);
+  font-size: 20px;
+  color: #ffffff;
+  background: #ff00aa;
+  border: 3px solid #000;
+  text-align: center;
+  padding: 6px 12px;
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-family: var(--fonte-titulo);
+  font-size: 15px;
+  color: #ffffff;
+  background: #6600cc;
+  border: 2px solid #000;
+  padding: 4px 8px;
+  margin: 0 0 8px 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   TEMAS POR PÁGINA — CONSISTÊNCIA ZERO
+   Cada body tem uma classe diferente com fundo diferente
+   ============================================================ */
+
+/* LOGIN — parede de tijolos */
+body.tela-login {
+  background-color: #8b4513;
+  background-image:
+    linear-gradient(335deg, #5c2d10 23px, transparent 23px),
+    linear-gradient(155deg, #5c2d10 23px, transparent 23px),
+    linear-gradient(335deg, #5c2d10 23px, transparent 23px),
+    linear-gradient(155deg, #5c2d10 23px, transparent 23px);
+  background-size: 58px 58px;
+  background-position: 0 0, 0 0, 29px 29px, 29px 29px;
+}
+
+/* ADMIN/COORDENADOR — gradiente roxo psicodélico */
+body.tela-admin {
+  background: linear-gradient(135deg, #4a0080 0%, #8a2be2 40%, #ff00ff 100%);
+}
+
+/* PROFESSOR — fundo preto com brilho */
+body.tela-professor {
+  background-color: #1a0033;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.8) 0.5px, transparent 1px),
+    radial-gradient(circle at 70% 60%, rgba(255,255,255,0.6) 0.5px, transparent 1px),
+    radial-gradient(circle at 40% 80%, rgba(255,215,0,0.8) 1px, transparent 2px),
+    radial-gradient(circle at 90% 20%, rgba(255,105,180,0.7) 0.8px, transparent 1.5px),
+    radial-gradient(circle at 10% 70%, rgba(0,255,255,0.6) 0.6px, transparent 1px),
+    radial-gradient(circle at 60% 10%, rgba(255,255,255,0.5) 0.4px, transparent 1px);
+  background-size: 50px 50px, 80px 80px, 100px 100px, 70px 70px, 90px 90px, 60px 60px;
+}
+
+/* ALUNO — listras de tigre */
+body.tela-aluno {
+  background:
+    repeating-linear-gradient(105deg,
+      #ff8c00 0px, #ff8c00 20px,
+      #000000 20px, #000000 28px,
+      #ff8c00 28px, #ff8c00 50px,
+      #000000 50px, #000000 56px);
+}
+
+/* DASHBOARD INSANO — estrelado com gradiente noturno */
+body.tela-insano {
+  background-color: #1a0033;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, #ffd700, transparent),
+    radial-gradient(2px 2px at 40px 70px, #fff, transparent),
+    radial-gradient(1px 1px at 50px 160px, #ffd700, transparent),
+    radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+    radial-gradient(2px 2px at 130px 80px, #ffd700, transparent),
+    radial-gradient(1px 1px at 160px 120px, #fff, transparent),
+    linear-gradient(180deg, #1a0033 0%, #4b0082 50%, #1a0033 100%);
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+/* ALERTAS/CONFIGS — laranja brilhante com estrelas */
+body.tela-config {
+  background-color: #ff8c00;
+  background-image:
+    radial-gradient(circle at 20% 30%, #ffd700 1px, transparent 2px),
+    radial-gradient(circle at 80% 50%, #fff 1px, transparent 2px),
+    radial-gradient(circle at 50% 80%, #ffd700 1px, transparent 2px),
+    linear-gradient(135deg, #ff6600 0%, #ff8c00 50%, #ffaa00 100%);
+  background-size: 40px 40px, 60px 60px, 50px 50px, 100% 100%;
+}
+
+/* DISCIPLINA — ciano berrante */
+body.tela-disciplina {
+  background: linear-gradient(135deg, #00ced1 0%, #40e0d0 50%, #afeeee 100%);
+}
+
+/* ============================================================
+   LAYOUT BÁSICO
+   ============================================================ */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header.top-bar {
+  background: linear-gradient(90deg, #ff00aa 0%, #6600cc 100%);
+  border-bottom: 4px solid #000;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 0 #000;
+}
+
+.top-bar .logo {
+  font-family: var(--fonte-titulo);
+  font-size: 20px;
+  color: #ffff00;
+  text-shadow: 2px 2px 0 #000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.top-bar .logo::before {
+  content: '◐';
+  font-size: 24px;
+  color: #ff0000;
+}
+
+.top-bar .menu-usuario {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: #fff;
+}
+
+.top-bar .menu-usuario .nome {
+  color: #ffff00;
+  font-weight: bold;
+}
+
+main {
+  flex: 1;
+  padding: 16px;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.page-title {
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.page-title .subtitulo {
+  color: #ffffff;
+  background: #000;
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* Navegação secundária */
+.nav-secundaria {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  justify-content: center;
+}
+
+.nav-secundaria a {
+  padding: 8px 16px;
+  background: #ffff00;
+  border: 3px solid #000;
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.nav-secundaria a:hover {
+  background: #ff00ff;
+  color: #fff;
+}
+
+.nav-secundaria a.ativo {
+  background: #ff0000;
+  color: #fff;
+}
+
+/* ============================================================
+   FAIXAS DE ATENÇÃO — usadas exaustivamente em todas as páginas
+   FRAGILIDADE 7 (Controle): atenção piscando rouba o controle visual
+   ============================================================ */
+.atencao-banner {
+  background: #ffff00;
+  color: #ff0000;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+  padding: 8px 12px;
+  border: 3px solid #ff0000;
+  margin: 12px 0;
+  text-transform: uppercase;
+  animation: piscaPisca 1.5s infinite;
+}
+
+@keyframes piscaPisca {
+  0%, 50%   { background: #ffff00; color: #ff0000; }
+  51%, 100% { background: #ff0000; color: #ffff00; }
+}
+
+.atencao-banner::before { content: '⚠ '; }
+.atencao-banner::after  { content: ' ⚠'; }
+
+/* Contador de visitas estilo Geocities */
+.contador-visitas {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #000;
+  color: #00ff00;
+  padding: 4px 8px;
+  font-family: var(--fonte-display);
+  font-size: 12px;
+  border: 2px solid #00ff00;
+  margin: 8px 0;
+}
+
+.contador-visitas .digitos {
+  font-family: var(--fonte-display);
+  letter-spacing: 2px;
+}
+
+/* Data/hora — propositalmente inválida */
+.data-quebrada {
+  font-family: var(--fonte-display);
+  font-size: 11px;
+  background: #000;
+  color: #ffff00;
+  padding: 4px 8px;
+  display: inline-block;
+  border: 2px solid #ffff00;
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disciplina - Sistema de Faltas IFC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="app-layout">
+    <header class="top-bar">
+      <div class="logo">Sistema de Faltas</div>
+      <div class="menu-usuario">
+        <span class="nome" id="nome-usuario"></span>
+        <button class="btn btn-logout" onclick="logout()">Sair</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- FRAGILIDADE 8 (Memória): sem breadcrumb na v1, usuário precisa lembrar de onde veio -->
+
+      <div class="page-title">
+        <h1 id="titulo-disciplina">—</h1>
+        <p class="subtitulo" id="subtitulo-disciplina"></p>
+      </div>
+
+      <div class="card-stats" id="cards-stats"></div>
+
+      <div class="card" style="margin-bottom: 16px;">
+        <h2>Distribuição de faltas na turma</h2>
+        <div class="grafico-container">
+          <canvas id="grafico-distribuicao"></canvas>
+        </div>
+        <!-- FRAGILIDADE 8 (Memória): legenda só aparece no hover via CSS -->
+        <div class="grafico-legenda">
+          Cada barra mostra quantos alunos têm faltas naquela faixa percentual.
+          Faixa &gt;25% indica reprovação por falta.
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Alunos matriculados</h2>
+
+        <div class="filtros">
+          <div>
+            <label for="filtro-aluno">Buscar aluno</label><br>
+            <input type="text" id="filtro-aluno" placeholder="Nome ou matrícula">
+          </div>
+          <div>
+            <label for="filtro-status">Status</label><br>
+            <!-- FRAGILIDADE 7 (Controle): select aplica automático -->
+            <select id="filtro-status">
+              <option value="">Todos</option>
+              <option value="critico">Crítico</option>
+              <option value="atencao">Atenção</option>
+              <option value="ok">OK</option>
+            </select>
+          </div>
+        </div>
+
+        <table class="tabela">
+          <thead>
+            <tr>
+              <th>Matrícula</th>
+              <th>Nome</th>
+              <th>Faltas</th>
+              <th>%</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tbody-alunos"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/disciplina.js"></script>
+  <script>
+    const user = exigirLogin();
+    if (user) inicializarDisciplina(user);
+  </script>
+  <script src="js/themeSwitch.js"></script>
+</body>
+</html>

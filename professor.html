@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professor - Sistema de Faltas IFC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <div class="app-layout">
+    <header class="top-bar">
+      <div class="logo">Sistema de Faltas</div>
+      <div class="menu-usuario">
+        <span class="nome" id="nome-usuario"></span>
+        <button class="btn btn-logout" onclick="logout()">Sair</button>
+      </div>
+    </header>
+
+    <main>
+      <div class="page-title">
+        <h1>Minhas Turmas</h1>
+        <p class="subtitulo" id="subtitulo-prof"></p>
+      </div>
+
+      <nav class="nav-secundaria">
+        <a href="professor.html" class="ativo">Visão geral</a>
+        <a href="alertas.html">Alertas</a>
+      </nav>
+
+      <div class="card-stats" id="cards-stats"></div>
+
+      <div class="card" style="margin-bottom: 16px;">
+        <h3>Filtros</h3>
+        <div class="filtros">
+          <div>
+            <label for="filtro-busca">Buscar</label><br>
+            <input type="text" id="filtro-busca" placeholder="Nome ou código">
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-disciplinas" id="lista-disciplinas"></div>
+    </main>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script>
+    const user = exigirLogin('professor');
+    if (user) inicializarDashboardProfessor(user);
+  </script>
+  <script src="js/themeSwitch.js"></script>
+</body>
+</html>

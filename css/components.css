@@ -1,0 +1,474 @@
+/* ============ BOTÕES ============ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid var(--cor-borda);
+  background: var(--cor-superficie);
+  color: var(--cor-texto);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: var(--raio);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn:hover {
+  border-color: var(--cor-primaria);
+  color: var(--cor-primaria);
+}
+
+.btn-primario {
+  background: var(--cor-primaria);
+  color: white;
+  border-color: var(--cor-primaria);
+}
+
+.btn-primario:hover {
+  background: var(--cor-primaria-hover);
+  color: white;
+  border-color: var(--cor-primaria-hover);
+}
+
+/* FRAGILIDADE 1 (Shneiderman: Consistência): logout vermelho — mesma cor de status crítico */
+.btn-logout {
+  background: var(--cor-perigo);
+  color: white;
+  border-color: var(--cor-perigo);
+}
+
+.btn-logout:hover {
+  background: var(--cor-perigo-hover);
+  border-color: var(--cor-perigo-hover);
+  color: white;
+}
+
+/* ============ CARDS ============ */
+.card {
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-lg);
+  padding: 20px;
+  box-shadow: var(--sombra-card);
+}
+
+.card-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card .valor {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--cor-texto);
+  line-height: 1.2;
+}
+
+.stat-card .label {
+  font-size: 12px;
+  color: var(--cor-texto-secundario);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+.stat-card.alerta .valor { color: var(--cor-alerta); }
+.stat-card.critico .valor { color: var(--cor-perigo); }
+.stat-card.ok .valor { color: var(--cor-sucesso); }
+
+/* ============ TABELA ============ */
+table.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+table.tabela th {
+  text-align: left;
+  padding: 12px;
+  background: #f9fafb;
+  border-bottom: 1px solid var(--cor-borda);
+  font-weight: 600;
+  color: var(--cor-texto-secundario);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+table.tabela td {
+  padding: 12px;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+table.tabela tbody tr:hover {
+  background: #f9fafb;
+}
+
+table.tabela tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.tabela-vazia {
+  text-align: center;
+  padding: 32px;
+  color: var(--cor-texto-secundario);
+  font-style: italic;
+}
+
+/* ============ BADGES ============ */
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.badge-critico {
+  background: #fee2e2;
+  color: var(--cor-perigo);
+}
+
+.badge-atencao {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.badge-ok {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+/* ============ FILTROS ============ */
+.filtros {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filtros input[type="text"],
+.filtros input[type="search"],
+.filtros input[type="date"],
+.filtros select {
+  padding: 8px 12px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  font-family: inherit;
+  font-size: 13px;
+  background: var(--cor-superficie);
+}
+
+.filtros input:focus,
+.filtros select:focus {
+  outline: none;
+  border-color: var(--cor-primaria);
+}
+
+.filtros label {
+  font-size: 12px;
+  color: var(--cor-texto-secundario);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ============ GRID DE DISCIPLINAS ============ */
+.grid-disciplinas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.disciplina-card {
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-lg);
+  padding: 18px;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.disciplina-card:hover {
+  border-color: var(--cor-primaria);
+  box-shadow: var(--sombra-card-hover);
+  text-decoration: none;
+}
+
+.disciplina-card .codigo {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--cor-texto-secundario);
+  margin-bottom: 4px;
+}
+
+.disciplina-card .nome {
+  font-weight: 600;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.disciplina-card .professor {
+  font-size: 12px;
+  color: var(--cor-texto-secundario);
+  margin-bottom: 12px;
+}
+
+.disciplina-card .indicadores {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--cor-borda);
+}
+
+.disciplina-card .indicador {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.disciplina-card .indicador .num {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.indicador.critico .num { color: var(--cor-perigo); }
+.indicador.atencao .num { color: var(--cor-alerta); }
+.indicador.ok .num { color: var(--cor-sucesso); }
+
+/* ============ GRÁFICO ============ */
+.grafico-container {
+  position: relative;
+  height: 320px;
+  margin: 16px 0;
+}
+
+/* FRAGILIDADE 8 (Shneiderman: Memória): legenda do gráfico só aparece no hover */
+.grafico-legenda {
+  display: none;
+  font-size: 11px;
+  color: var(--cor-texto-secundario);
+  margin-top: 8px;
+}
+
+.grafico-container:hover + .grafico-legenda {
+  display: block;
+}
+
+/* ============ FORMULÁRIO LOGIN ============ */
+.login-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f4f6f9 0%, #e9ecf2 100%);
+  padding: 24px;
+}
+
+.login-card {
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: 12px;
+  padding: 40px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+.login-card h1 {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.login-card .subtitulo {
+  color: var(--cor-texto-secundario);
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+
+.login-card label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--cor-texto-secundario);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 4px;
+  margin-top: 16px;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.login-card input:focus {
+  outline: none;
+  border-color: var(--cor-primaria);
+}
+
+.login-card .btn {
+  width: 100%;
+  justify-content: center;
+  margin-top: 24px;
+  padding: 10px;
+}
+
+.login-card .erro {
+  color: var(--cor-perigo);
+  font-size: 12px;
+  margin-top: 16px;
+  text-align: center;
+  min-height: 18px;
+}
+
+.login-card .demo-info {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--cor-borda);
+  font-size: 11px;
+  color: var(--cor-texto-secundario);
+  line-height: 1.6;
+}
+
+.login-card .demo-info code {
+  background: #f4f6f9;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-size: 11px;
+}
+
+/* ============ BREADCRUMB ============ */
+/* FRAGILIDADE 8 (Shneiderman: Memória) na v1 não há breadcrumb implementado.
+   Esta classe existe pronta para a v2. */
+.breadcrumb {
+  font-size: 12px;
+  color: var(--cor-texto-secundario);
+  margin-bottom: 12px;
+}
+
+.breadcrumb a { color: var(--cor-texto-secundario); }
+.breadcrumb a:hover { color: var(--cor-primaria); }
+
+/* ============ MODAL ============ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-overlay.aberto { display: flex; }
+
+.modal {
+  background: var(--cor-superficie);
+  border-radius: var(--raio-lg);
+  padding: 24px;
+  max-width: 480px;
+  width: calc(100% - 32px);
+}
+
+.modal h2 {
+  color: var(--cor-perigo);
+}
+
+.modal .acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+/* ============ RESPONSIVO ============ */
+@media (max-width: 640px) {
+  main { padding: 16px; }
+  .top-bar { padding: 10px 16px; }
+  .card-stats { grid-template-columns: 1fr 1fr; }
+}
+
+/* ============ BOTÃO DE TROCA NORMAL / CAÓTICO ============ */
+.modelo-switch {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 16px;
+  border: 0;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.modelo-switch:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.32);
+  filter: brightness(1.04);
+}
+
+.modelo-switch-icon {
+  font-size: 17px;
+  line-height: 1;
+}
+
+.modelo-switch-caotico {
+  background: linear-gradient(135deg, #7c3aed, #f97316, #ef4444);
+  color: #fff;
+}
+
+.modelo-switch-normal {
+  background: #111827;
+  color: #fff;
+  border: 2px solid #e5e7eb;
+}
+
+@media (max-width: 640px) {
+  .modelo-switch {
+    right: 12px;
+    bottom: 12px;
+    padding: 10px 13px;
+    font-size: 12px;
+  }
+}
+
+
+
+/* ============ TÍTULO CLICÁVEL DO MODO NORMAL ============ */
+.logo-link {
+  cursor: pointer;
+  user-select: none;
+  padding: 6px 8px;
+  border-radius: var(--raio);
+  transition: background 0.15s, color 0.15s;
+}
+
+.logo-link:hover,
+.logo-link:focus-visible {
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--cor-primaria);
+  outline: none;
+}

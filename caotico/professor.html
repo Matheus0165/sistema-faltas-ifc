@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TELA PROFESSOR - MINHAS TURMAS E FALTAS!!!</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body class="tela-professor">
+  <div class="app-layout">
+    <header class="top-bar">
+      <div class="logo">SISTEMA DE FALTAS!!!</div>
+      <div class="menu-usuario">
+        Professor: <span class="nome" id="nome-usuario"></span>
+        <button class="btn btn-logout" onclick="logout()">Sair</button>
+      </div>
+    </header>
+
+    <main>
+      <div class="page-title">
+        <h1>TELA PROFESSOR - MINHAS TURMAS E FALTAS</h1>
+        <p class="subtitulo" id="subtitulo-prof"></p>
+      </div>
+
+      <div class="atencao-banner">SELECIONE A MATÉRIA/TURMA ABAIXO!!!</div>
+
+      <div class="layout-com-sidebar">
+        <!-- Sidebar arco-íris do professor -->
+        <aside class="sidebar-rainbow">
+          <a href="professor.html">Minhas Turmas</a>
+          <a href="professor.html">Lançar Faltas</a>
+          <a href="alertas.html">Ver Faltas</a>
+          <a href="alertas.html">Relatórios</a>
+          <a href="alertas.html">Mensagens (3)</a>
+          <a href="#" onclick="alert('Não implementado!!!'); return false;">Alterar Senha</a>
+          <a href="#" onclick="logout(); return false;">Sair</a>
+        </aside>
+
+        <div class="conteudo">
+          <div class="card-stats" id="cards-stats"></div>
+
+          <div class="card">
+            <h3>FILTROS</h3>
+            <div class="filtros">
+              <div>
+                <label for="filtro-busca">Buscar matéria</label><br>
+                <input type="text" id="filtro-busca" placeholder="Nome ou código">
+              </div>
+              <!-- FRAGILIDADE 6: sem limpar -->
+              <!-- FRAGILIDADE 3: sem contador -->
+            </div>
+          </div>
+
+          <h2>MINHAS MATÉRIAS!!!</h2>
+          <div class="grid-disciplinas" id="lista-disciplinas"></div>
+
+          <div class="atencao-banner">ATENÇÃO: Verifique antes de salvar!!!</div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script>
+    const user = exigirLogin('professor');
+    if (user) inicializarDashboardProfessor(user);
+  </script>
+  <script src="js/themeSwitch.js"></script>
+</body>
+</html>

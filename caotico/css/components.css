@@ -1,0 +1,639 @@
+/* ============================================================
+   components.css — v1 CAÓTICA · Componentes propositalmente ruins
+   ============================================================ */
+
+/* ============ BOTÕES — variando cores absurdamente ============ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 16px;
+  border: 3px solid #000;
+  background: #00cc00;
+  color: #000;
+  font-family: var(--fonte);
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 4px 4px 0 #000;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+.btn:hover {
+  background: #ff00ff;
+  color: #fff;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #000;
+}
+
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #000;
+}
+
+.btn-primario {
+  background: #00cc00;
+  color: #000;
+}
+
+/* FRAGILIDADE 1 (Consistência): logout vermelho, igual status crítico */
+.btn-logout {
+  background: var(--cor-perigo);
+  color: #ffff00;
+  border-color: #ffff00;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.btn-logout:hover {
+  background: #800000;
+  color: #fff;
+}
+
+/* ============ SIDEBAR ARCO-ÍRIS ============ */
+/* Sidebar com cada botão de uma cor diferente — caos visual proposital */
+.sidebar-rainbow {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  background: #4a0080;
+  border: 4px solid #000;
+  min-width: 180px;
+}
+
+.sidebar-rainbow a {
+  display: block;
+  padding: 8px 12px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 13px;
+  border: 3px solid #000;
+  color: #000;
+  text-shadow: none;
+  box-shadow: 3px 3px 0 #000;
+}
+
+/* Cada link sidebar uma cor: arco-íris */
+.sidebar-rainbow a:nth-child(1) { background: #ff0000; color: #fff; }
+.sidebar-rainbow a:nth-child(2) { background: #ff8c00; }
+.sidebar-rainbow a:nth-child(3) { background: #ffff00; }
+.sidebar-rainbow a:nth-child(4) { background: #00cc00; color: #fff; }
+.sidebar-rainbow a:nth-child(5) { background: #00bfff; color: #fff; }
+.sidebar-rainbow a:nth-child(6) { background: #4169e1; color: #fff; }
+.sidebar-rainbow a:nth-child(7) { background: #9400d3; color: #fff; }
+.sidebar-rainbow a:nth-child(8) { background: #ff1493; color: #fff; }
+
+.sidebar-rainbow a:hover {
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+/* Layout com sidebar */
+.layout-com-sidebar {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.layout-com-sidebar .conteudo {
+  flex: 1;
+  background: #fff;
+  border: 4px solid #000;
+  padding: 16px;
+}
+
+/* ============ CARDS ============ */
+.card {
+  background: var(--cor-superficie);
+  border: 4px solid #000;
+  padding: 16px;
+  box-shadow: 6px 6px 0 #ffff00, 6px 6px 0 4px #000;
+  margin-bottom: 16px;
+}
+
+.card-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.stat-card {
+  text-align: center;
+  background: #fff;
+}
+
+.stat-card .valor {
+  font-family: var(--fonte-titulo);
+  font-size: 36px;
+  color: #ff0000;
+  text-shadow: 2px 2px 0 #ffff00;
+  line-height: 1;
+}
+
+.stat-card .label {
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 6px;
+  color: #000;
+}
+
+.stat-card.alerta { background: #ffff00; }
+.stat-card.alerta .valor { color: #ff8c00; }
+.stat-card.critico { background: #ff0000; color: #fff; }
+.stat-card.critico .valor { color: #ffff00; text-shadow: 2px 2px 0 #000; }
+.stat-card.critico .label { color: #fff; }
+.stat-card.ok { background: #00cc00; }
+.stat-card.ok .valor { color: #fff; text-shadow: 2px 2px 0 #000; }
+
+/* ============ TABELA ============ */
+table.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  background: #fff;
+  border: 3px solid #000;
+}
+
+table.tabela th {
+  text-align: center;
+  padding: 8px;
+  background: #6600cc;
+  color: #ffff00;
+  border: 2px solid #000;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+  text-shadow: 1px 1px 0 #000;
+}
+
+table.tabela td {
+  padding: 8px;
+  border: 2px solid #000;
+  text-align: center;
+}
+
+/* Linhas zebra alternando cores berrantes */
+table.tabela tbody tr:nth-child(odd)  { background: #ffcccc; }
+table.tabela tbody tr:nth-child(even) { background: #ccccff; }
+
+table.tabela tbody tr:hover {
+  background: #ffff00 !important;
+}
+
+.tabela-vazia {
+  text-align: center;
+  padding: 24px;
+  color: #ff0000;
+  font-weight: bold;
+  font-style: italic;
+  background: #ffff00;
+  border: 3px dashed #ff0000;
+}
+
+/* ============ BADGES ============ */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 2px solid #000;
+  letter-spacing: 0.5px;
+}
+
+.badge-critico {
+  background: #ff0000;
+  color: #ffff00;
+  text-shadow: 1px 1px 0 #000;
+  animation: piscaPisca 1s infinite;
+}
+
+.badge-atencao {
+  background: #ffff00;
+  color: #ff0000;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+.badge-ok {
+  background: #00cc00;
+  color: #fff;
+  text-shadow: 1px 1px 0 #000;
+}
+
+/* ============ FILTROS ============ */
+.filtros {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  background: #ffff00;
+  padding: 12px;
+  border: 3px solid #000;
+}
+
+.filtros input[type="text"],
+.filtros input[type="search"],
+.filtros input[type="date"],
+.filtros select {
+  padding: 6px 10px;
+  border: 3px solid #000;
+  font-family: var(--fonte);
+  font-size: 14px;
+  background: #fff;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.filtros input:focus,
+.filtros select:focus {
+  outline: 3px dashed #ff00ff;
+  background: #ffff99;
+}
+
+.filtros label {
+  font-size: 12px;
+  color: #000;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* ============ GRID DE DISCIPLINAS ============ */
+.grid-disciplinas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.disciplina-card {
+  background: #fff;
+  border: 4px solid #000;
+  padding: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  box-shadow: 4px 4px 0 #ff00ff;
+}
+
+.disciplina-card:hover {
+  background: #ffff00;
+  box-shadow: 6px 6px 0 #ff0000;
+  text-decoration: none;
+  transform: translate(-2px, -2px);
+}
+
+.disciplina-card .codigo {
+  font-family: var(--fonte-display);
+  font-size: 11px;
+  color: #fff;
+  background: #ff0000;
+  padding: 2px 6px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.disciplina-card .nome {
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 6px;
+  color: #6600cc;
+  text-transform: uppercase;
+}
+
+.disciplina-card .professor {
+  font-size: 12px;
+  font-style: italic;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.disciplina-card .indicadores {
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+  padding-top: 8px;
+  border-top: 2px dashed #000;
+}
+
+.disciplina-card .indicador {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  text-align: center;
+  padding: 4px;
+  border: 2px solid #000;
+}
+
+.disciplina-card .indicador .num {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.indicador.critico { background: #ff0000; color: #ffff00; }
+.indicador.atencao { background: #ffff00; color: #000; }
+.indicador.ok      { background: #00cc00; color: #fff; }
+
+/* ============ GRÁFICO ============ */
+.grafico-container {
+  position: relative;
+  height: 320px;
+  margin: 12px 0;
+  background: #fff;
+  border: 3px solid #000;
+  padding: 8px;
+}
+
+/* FRAGILIDADE 8 (Memória): legenda só no hover */
+.grafico-legenda {
+  display: none;
+  font-size: 12px;
+  color: #fff;
+  background: #000;
+  margin-top: 6px;
+  padding: 4px 8px;
+  font-weight: bold;
+}
+
+.grafico-container:hover + .grafico-legenda {
+  display: block;
+}
+
+/* ============ FORMULÁRIO LOGIN ============ */
+.login-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.login-card {
+  background: #fff;
+  border: 6px ridge #ff0000;
+  padding: 24px;
+  width: 100%;
+  max-width: 360px;
+  box-shadow:
+    0 0 0 4px #ffff00,
+    0 0 0 8px #ff0000,
+    8px 8px 24px rgba(0,0,0,0.8);
+  text-align: center;
+}
+
+.login-card .titulo-bloody {
+  font-family: var(--fonte-titulo);
+  font-size: 28px;
+  color: #ff0000;
+  text-shadow: 3px 3px 0 #ffff00, 6px 6px 6px #000;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0 0 4px 0;
+  letter-spacing: 1px;
+}
+
+.login-card .acesse-agora {
+  color: #ff00aa;
+  font-style: italic;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.login-card .data-quebrada {
+  margin-bottom: 12px;
+}
+
+.login-card .faca-seu-login {
+  background: #ff0000;
+  color: #ffff00;
+  font-family: var(--fonte-titulo);
+  font-size: 18px;
+  text-align: center;
+  padding: 6px;
+  border: 3px solid #000;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.login-card label {
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 4px;
+  margin-top: 8px;
+  text-align: left;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 3px solid #000;
+  font-family: var(--fonte);
+  font-size: 14px;
+  background: #ffffcc;
+}
+
+.login-card input:focus {
+  outline: 3px dashed #ff00ff;
+  background: #ffff66;
+}
+
+.login-card .btn {
+  margin-top: 16px;
+  font-size: 18px;
+  padding: 8px 24px;
+  background: #00cc00;
+  font-family: var(--fonte-titulo);
+}
+
+.login-card .esqueceu {
+  margin-top: 12px;
+  font-size: 12px;
+}
+
+.login-card .esqueceu a {
+  color: #ff0000;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.login-card .bemvindo-marquee {
+  margin-top: 16px;
+  background: #00ffff;
+  color: #ff00aa;
+  font-weight: bold;
+  border: 2px solid #000;
+  padding: 4px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.login-card .bemvindo-marquee span {
+  display: inline-block;
+  animation: roladura 10s linear infinite;
+  padding-left: 100%;
+}
+
+@keyframes roladura {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+
+.login-card .erro {
+  color: #fff;
+  background: #ff0000;
+  font-size: 13px;
+  margin-top: 12px;
+  text-align: center;
+  min-height: 16px;
+  padding: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.login-card .demo-info {
+  margin-top: 16px;
+  padding: 8px;
+  background: #ffffcc;
+  border: 2px dashed #ff00ff;
+  font-size: 11px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.login-card .demo-info code {
+  background: #000;
+  color: #00ff00;
+  padding: 1px 4px;
+  font-family: var(--fonte-display);
+  font-size: 10px;
+}
+
+/* ============ BREADCRUMB (não usado na v1) ============ */
+.breadcrumb { display: none; }
+
+/* ============ MODAL ============ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-overlay.aberto { display: flex; }
+
+.modal {
+  background: #ffff00;
+  border: 6px ridge #ff0000;
+  padding: 24px;
+  max-width: 480px;
+  width: calc(100% - 32px);
+  text-align: center;
+  box-shadow: 0 0 40px #ff0000;
+  animation: pulsar 1s infinite alternate;
+}
+
+@keyframes pulsar {
+  from { transform: scale(1); }
+  to   { transform: scale(1.02); }
+}
+
+.modal h2 {
+  color: #fff;
+  background: #ff0000;
+  font-size: 22px;
+}
+
+.modal .acoes {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* ============ NÚMERO GIGANTE (insano) ============ */
+.numero-gigante {
+  font-family: var(--fonte-titulo);
+  font-size: 120px;
+  color: #ff0000;
+  text-shadow:
+    4px 4px 0 #ffff00,
+    8px 8px 0 #000,
+    0 0 20px #ff00aa;
+  text-align: center;
+  line-height: 1;
+  margin: 16px 0;
+}
+
+/* ============ RESPONSIVO (mínimo) ============ */
+@media (max-width: 768px) {
+  .layout-com-sidebar { flex-direction: column; }
+  .sidebar-rainbow { width: 100%; }
+  main { padding: 8px; }
+  h1 { font-size: 22px; }
+  .card-stats { grid-template-columns: 1fr 1fr; }
+}
+
+/* ============ BOTÃO DE TROCA NORMAL / CAÓTICO ============ */
+.modelo-switch {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 16px;
+  border: 0;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.modelo-switch:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.32);
+  filter: brightness(1.04);
+}
+
+.modelo-switch-icon {
+  font-size: 17px;
+  line-height: 1;
+}
+
+.modelo-switch-caotico {
+  background: linear-gradient(135deg, #7c3aed, #f97316, #ef4444);
+  color: #fff;
+}
+
+.modelo-switch-normal {
+  background: #111827;
+  color: #fff;
+  border: 2px solid #e5e7eb;
+}
+
+@media (max-width: 640px) {
+  .modelo-switch {
+    right: 12px;
+    bottom: 12px;
+    padding: 10px 13px;
+    font-size: 12px;
+  }
+}
+

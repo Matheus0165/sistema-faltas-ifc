@@ -1,0 +1,130 @@
+/* ============ RESET E VARIÁVEIS ============ */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+:root {
+  /* Cores principais */
+  --cor-bg: #f4f6f9;
+  --cor-superficie: #ffffff;
+  --cor-borda: #e1e5ec;
+  --cor-texto: #2c3e50;
+
+  /* FRAGILIDADE 2 (Shneiderman: Universalidade): contraste fraco no secundário */
+  --cor-texto-secundario: #b3b9c2;
+
+  /* Cores de marca */
+  --cor-primaria: #2563eb;
+  --cor-primaria-hover: #1d4ed8;
+
+  /* FRAGILIDADE 1 (Shneiderman: Consistência): vermelho usado tanto em status crítico
+     quanto em botão de logout. Reaproveitamos a mesma variável de propósito. */
+  --cor-perigo: #dc2626;
+  --cor-perigo-hover: #b91c1c;
+
+  --cor-alerta: #f59e0b;
+  --cor-sucesso: #10b981;
+
+  /* Sombras e raios */
+  --sombra-card: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --sombra-card-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --raio: 6px;
+  --raio-lg: 10px;
+
+  /* Tipografia */
+  --fonte: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  font-family: var(--fonte);
+  background: var(--cor-bg);
+  color: var(--cor-texto);
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+a { color: var(--cor-primaria); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1 { font-size: 22px; font-weight: 600; margin: 0 0 4px 0; }
+h2 { font-size: 18px; font-weight: 600; margin: 0 0 12px 0; }
+h3 { font-size: 15px; font-weight: 600; margin: 0 0 8px 0; }
+
+/* ============ LAYOUT ============ */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header.top-bar {
+  background: var(--cor-superficie);
+  border-bottom: 1px solid var(--cor-borda);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-bar .logo {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--cor-primaria);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.top-bar .logo::before {
+  content: '◐';
+  font-size: 20px;
+}
+
+.top-bar .menu-usuario {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 13px;
+}
+
+.top-bar .menu-usuario .nome {
+  color: var(--cor-texto-secundario);
+}
+
+main {
+  flex: 1;
+  padding: 24px;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.page-title {
+  margin-bottom: 24px;
+}
+
+.page-title .subtitulo {
+  color: var(--cor-texto-secundario);
+  font-size: 13px;
+}
+
+/* Navegação secundária */
+.nav-secundaria {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.nav-secundaria a {
+  padding: 8px 4px;
+  color: var(--cor-texto-secundario);
+  border-bottom: 2px solid transparent;
+  font-weight: 500;
+}
+
+.nav-secundaria a.ativo {
+  color: var(--cor-primaria);
+  border-bottom-color: var(--cor-primaria);
+  text-decoration: none;
+}

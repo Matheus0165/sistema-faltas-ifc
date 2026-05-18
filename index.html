@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Sistema de Faltas IFC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <div class="login-wrapper">
+    <div class="login-card">
+      <h1>◐ Sistema de Faltas</h1>
+      <p class="subtitulo">Gestão acadêmica · IFC · 2026.1</p>
+
+      <!-- FRAGILIDADE 5 (Shneiderman: Prevenção de erros):
+           sem type="email", sem required, sem maxlength, sem máscara.
+           O usuário pode digitar qualquer coisa que o sistema só vai
+           reclamar genericamente no final. -->
+      <label for="email">E-mail</label>
+      <input type="text" id="email" placeholder="seu@email.com" autocomplete="username">
+
+      <label for="senha">Senha</label>
+      <input type="password" id="senha" autocomplete="current-password">
+
+      <button class="btn btn-primario" id="btn-entrar">Entrar</button>
+
+      <!-- FRAGILIDADE 3 (Shneiderman: Feedback): mensagem de erro genérica -->
+      <p class="erro" id="erro"></p>
+
+      <div class="demo-info">
+        <strong>Contas demo:</strong><br>
+        Coordenador: <code>coord@ifc.br</code> / <code>123</code><br>
+        Professor: <code>joao@ifc.br</code> / <code>123</code><br>
+        Professor: <code>maria@ifc.br</code> / <code>123</code><br>
+        Professor: <code>carlos@ifc.br</code> / <code>123</code>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.getElementById('btn-entrar').addEventListener('click', tentarLogin);
+    document.getElementById('senha').addEventListener('keypress', e => {
+      if (e.key === 'Enter') tentarLogin();
+    });
+
+    function tentarLogin() {
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('senha').value;
+      const user = fazerLogin(email, senha);
+      if (user) {
+        // FRAGILIDADE 4 (Shneiderman: Encerramento): nenhum feedback de sucesso,
+        // simplesmente redireciona.
+        const destino = user.perfil === 'coordenador' ? 'coordenador.html' : 'professor.html';
+        window.location.href = destino;
+      } else {
+        // FRAGILIDADE 3: erro genérico, não diz se foi o email ou a senha
+        document.getElementById('erro').textContent = 'Falha ao entrar.';
+      }
+    }
+  </script>
+  <script src="js/themeSwitch.js"></script>
+</body>
+</html>
