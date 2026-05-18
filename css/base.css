@@ -1,4 +1,4 @@
-/* ============ RESET E VARIÁVEIS ============ */
+
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 
@@ -50,7 +50,6 @@ h1 { font-size: 22px; font-weight: 600; margin: 0 0 4px 0; }
 h2 { font-size: 18px; font-weight: 600; margin: 0 0 12px 0; }
 h3 { font-size: 15px; font-weight: 600; margin: 0 0 8px 0; }
 
-/* ============ LAYOUT ============ */
 .app-layout {
   display: flex;
   flex-direction: column;

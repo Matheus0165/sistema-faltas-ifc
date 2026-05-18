@@ -1,4 +1,3 @@
-// Funções utilitárias compartilhadas
 
 // Limite de reprovação por falta (LDB): 25% das aulas totais
 const LIMITE_REPROVACAO = 0.25;

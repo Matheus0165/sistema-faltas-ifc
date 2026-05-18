@@ -1,5 +1,4 @@
 // Botão de troca entre os dois modelos do sistema.
-// Mantém a mesma página e preserva query string/hash (?codigo=..., ?matricula=...).
 (function () {
   const PAGINAS = [
     'index.html',

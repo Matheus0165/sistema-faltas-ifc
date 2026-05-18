@@ -1,9 +1,7 @@
-// Lógica da tela de detalhe da disciplina
 
 function inicializarDisciplina(user) {
   document.getElementById('nome-usuario').textContent = user.nome;
 
-  // Helper: volta pra dashboard certa conforme perfil
   const voltarDashboard = () => {
     window.location.href = user.perfil === 'coordenador' ? 'coordenador.html' : 'professor.html';
   };
@@ -11,7 +9,6 @@ function inicializarDisciplina(user) {
   const params = new URLSearchParams(window.location.search);
   let codigo = params.get('codigo');
 
-  // Sem codigo -> usa a primeira disciplina disponível pro perfil
   if (!codigo) {
     const disponiveis = user.perfil === 'coordenador'
       ? DISCIPLINAS
