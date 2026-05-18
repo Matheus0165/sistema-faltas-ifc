@@ -11,7 +11,6 @@ function inicializarAluno(user) {
   const params = new URLSearchParams(window.location.search);
   let matricula = params.get('matricula');
 
-  // Sem matrícula -> usa o primeiro aluno disponível pro perfil
   if (!matricula) {
     if (user.perfil === 'coordenador') {
       matricula = ALUNOS[0].matricula;
@@ -41,7 +40,6 @@ function inicializarAluno(user) {
 
   let freqs = frequenciasDoAluno(matricula);
 
-  // Se for professor, só mostra as disciplinas dele
   if (user.perfil === 'professor') {
     freqs = freqs.filter(f => user.disciplinas.includes(f.disciplina));
     if (freqs.length === 0) {
@@ -50,12 +48,10 @@ function inicializarAluno(user) {
     }
   }
 
-  // Cabeçalho
   document.getElementById('titulo-aluno').textContent = aluno.nome;
   document.getElementById('subtitulo-aluno').textContent =
     `Matrícula ${aluno.matricula} · ${aluno.curso}`;
 
-  // Estatísticas
   const totalDisc = freqs.length;
   const criticos = freqs.filter(f => f.status === 'critico').length;
   const atencao = freqs.filter(f => f.status === 'atencao').length;
@@ -68,10 +64,9 @@ function inicializarAluno(user) {
     { valor: criticos, label: 'Críticas', classe: 'critico' }
   ]);
 
-  // Gráfico
+ 
   desenharGrafico(freqs);
 
-  // Tabela
   renderizarTabela(freqs);
 }
 
@@ -115,7 +110,6 @@ function renderizarTabela(freqs) {
   const tbody = document.getElementById('tbody-disciplinas');
   tbody.innerHTML = '';
 
-  // Ordena por % decrescente
   freqs.sort((a, b) => b.percentual - a.percentual);
 
   freqs.forEach(f => {

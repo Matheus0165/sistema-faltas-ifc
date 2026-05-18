@@ -1,4 +1,3 @@
-// Autenticação fake: valida contra USUARIOS e salva sessão no localStorage.
 // FRAGILIDADE PROPOSITAL (v1): aceita qualquer email mal formatado, sem feedback claro de erro.
 
 const SESSION_KEY = 'sistema_faltas_sessao';
